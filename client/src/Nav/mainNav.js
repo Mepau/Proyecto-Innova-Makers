@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from "../Views/home";
-import FacilitatorView from "../Views/facilitator";
+import DevicesView from "../Views/devices";
 import NeedKnowerView from "../Views/need_knower";
 
 const Nav = (props) => {
@@ -21,7 +21,7 @@ const Nav = (props) => {
                                 <Link class="nav-link" to="/">Home</Link>
                             </li>
                             <li class="nav-item">
-                                <Link class="nav-link" to="/Facilitator">Facilitator</Link>
+                                <Link class="nav-link" to="/Devices">Devices</Link>
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link" to="/Need_Knower">Needs Knower</Link>
@@ -37,7 +37,7 @@ const Nav = (props) => {
             </nav>
             <Routes>
                 <Route exact path='/' element={< Home />}></Route>
-                <Route exact path='/Facilitator' element={< FacilitatorView />}/>
+                <Route exact path='/Devices' element={< DevicesView />}/>
                 <Route exact path='/Need_Knower' element={< NeedKnowerView />}/>
             </Routes>
 
