@@ -8,30 +8,28 @@ import NewIdeaModal from "../Components/newIdeaModal";
 
 const UserView = (props) => {
 
-    const [data, setData] = useState([]) 
+    const [submitted, setSubmitted] = useState(false)
+    const [data, setData] = useState([])
 
     useEffect(() => {
     
       axios.get("/").then((res) => {
-        setData(JSON.parse(res.data));
+        setData(JSON.parse(res.data))
       });
-    }, []);
-  
+    }, [submitted]);
   
     return (
       <Container fluid>
         <Row>
-          <Col xs={2} style={{ backgroundColor: "lightgrey", height: 200 }}>
-            <h1>Sidebar</h1>
-          </Col>
-          <Col>
+          <Col xs={8}>
             <Row>
               
             </Row>
             <Row>
-              <h2>Dispositivos</h2>
+              <h2 style={{color: "whitesmoke"}}>Dispositivos</h2>
             </Row>
             {data.map((obj, idx) => {
+              if(obj.business === "InnoMakers")
               return (
                 <Row>
                   <Thumbnail key={idx} data={obj} disabled={true} />
@@ -40,7 +38,7 @@ const UserView = (props) => {
             })}
           </Col>
           <Col>
-          <NewIdeaModal/>
+          <NewIdeaModal submitted={submitted} setSubmitted={setSubmitted}/>
           </Col>
         </Row>
       </Container>

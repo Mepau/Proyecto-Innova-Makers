@@ -3,7 +3,8 @@ import { useState } from "react";
 import { ImageUpload } from "./ImageUploader";
 import axios from "axios"
 
-const NewIdeaModal = () => {
+const NewIdeaModal = (props) => {
+  const { submitted ,setSubmitted } = props
   const [show, handleShow] = useState();
   const [selectedFile, setSelectedFile] = useState()
   const [description, handleDescriptionChange] = useState()
@@ -20,14 +21,8 @@ const NewIdeaModal = () => {
     formdata.append("description", description);
     formdata.append("amputationTags", amputationTags);
     formdata.append("functionalTags", functionalTags);
-    //axios.post('/devices/new', formdata, {
-    //  headers: {
-    //   'content-type': 'multipart/form-data' // do not forget this 
-    //  }})
+    formdata.append("business", "InnoMakers");
 
-    for (var key of formdata.entries()) {
-      console.log(key[0] + ', ' + key[1]);
-  }
 
     axios({
       method: "post",
@@ -37,7 +32,9 @@ const NewIdeaModal = () => {
     })
       .then(function (response) {
         //handle success
-        console.log(response);
+        console.log(response)
+        setSubmitted(!submitted)
+
       })
       .catch(function (response) {
         //handle error
@@ -74,10 +71,10 @@ const NewIdeaModal = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Persona</Form.Label>
-              <Form.Control placeholder="Nombre o correo de la persona" value="" disabled />
+              <Form.Control placeholder="InnoMakers" value="InnoMakers" disabled />
             </Form.Group>
             <ImageUpload selectedFile={selectedFile} setSelectedFile={setSelectedFile}/>
-            <Button onClick={handleSubmit}>Enviar idea</Button>
+            <Button type="button" onClick={handleSubmit}>Enviar idea</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>

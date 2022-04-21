@@ -46,15 +46,12 @@ const Devices= (props) => {
   return (
     <Container fluid>
       <Row>
-        <Col xs={2} style={{ backgroundColor: "lightgrey", height: 200 }}>
-          <h1>Sidebar</h1>
-        </Col>
         <Col>
-          <Row>
+          <Row style={{background: "white"}}>
             <QueryForm handles={{ handleSubmit, handleRadios, handleQuery }} />
           </Row>
           <Row>
-            <h2>Dispositivos</h2>
+            <h2 style={{color: "whitesmoke"}}>Dispositivos</h2>
           </Row>
           {data.map((obj, idx) => {
             return (

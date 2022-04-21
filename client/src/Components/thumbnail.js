@@ -10,7 +10,7 @@ const Thumbnail = (props) => {
   console.log(img.split("\\")[2]);
 
   return (
-    <Container style={{ padding: 10 }}>
+    <Container style={{ padding: 10, background: "whitesmoke" }}>
       <Row>
         <Col xs={4}>
           {img.includes("archivolocal") ? (

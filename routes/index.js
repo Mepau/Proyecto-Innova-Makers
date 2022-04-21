@@ -36,7 +36,7 @@ const data = [
 /* GET home page. */
 router.get("/", function (req, res, next) {
   console.log(req.query);
-  const { query, option } = req.query;
+  const { query="", option="Todos" } = req.query;
 
   resArray = data
     .filter((device, index) => {
@@ -72,20 +72,17 @@ router.get("/", function (req, res, next) {
           return device;
       }
     });
-
   console.log(resArray)
   res.json(JSON.stringify(resArray));
   return res.status(200).end();
 });
 
 router.post("/devices/new" , upload.single("file") ,(req, res, next) =>  {
-  console.log(req.body)
-  console.log(req.file)
 
   newIdea = {
     description: req.body.description,
     img: req.file.path,
-    business: "",
+    business: req.body.business,
     rating: 0,
     amputationTags: req.body.amputationTags.split(" "),
     functionalityTags: req.body.functionalTags.split(" ")
@@ -93,7 +90,8 @@ router.post("/devices/new" , upload.single("file") ,(req, res, next) =>  {
 
   data.push(newIdea)
   
-  return res.status(200).end()
+  res.json(JSON.stringify(data));
+  return res.status(200).end();
 })
 
 module.exports = router;
