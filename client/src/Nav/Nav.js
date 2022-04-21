@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "../Views/home";
 import DevicesView from "../Views/devices";
 import NeedKnowerView from "../Views/need_knower";
+import UserView from "../Views/user";
 
 const Nav = (props) => {
   return (
@@ -41,17 +42,13 @@ const Nav = (props) => {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
+
+            <Link className="nav-link" to="/User">
+              <img
+                src="585e4bf3cb11b227491c339a.png"
+                width="50"
               />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+            </Link>
           </div>
         </div>
       </nav>
@@ -59,6 +56,7 @@ const Nav = (props) => {
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/Devices" element={<DevicesView />} />
         <Route exact path="/Need_Knower" element={<NeedKnowerView />} />
+        <Route exact path="/User" element={<UserView />} />
       </Routes>
     </Router>
   );

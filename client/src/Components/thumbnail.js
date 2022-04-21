@@ -7,14 +7,18 @@ const Thumbnail = (props) => {
   const { description, img, rating, amputationTags, functionalityTags } =
     props.data;
 
+  console.log(img.split("\\")[2]);
+
   return (
     <Container style={{ padding: 10 }}>
-      <Row >
+      <Row>
         <Col xs={4}>
-          <Image thumbnail className="img-thumbnail" src={img} />
+          {img.includes("archivolocal") ? (
+            <img thumbnail className="img-thumbnail" src={img.split("\\")[2]} width="300" />
+          ) : <Image thumbnail className="img-thumbnail" src={img} />}
         </Col>
         <Col>
-          <Row >
+          <Row>
             <h3>{description}</h3>
           </Row>
           <Row>

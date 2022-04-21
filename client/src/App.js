@@ -1,6 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Nav from "./Nav/mainNav"
+
 import {Container } from "react-bootstrap"
+import Nav from "./Nav/Nav";
+import axios from 'axios';
+import {BrowserRouter} from "react-router-dom"
+
+axios.defaults.baseURL = "http://localhost:3000"
 
 function App() {
   return (

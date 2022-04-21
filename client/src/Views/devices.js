@@ -1,32 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Thumbnail from "../Components/thumbnail";
 import { Container, Row, Col } from "react-bootstrap";
 import QueryForm from "../Components/queryForm";
+import axios from "axios";
 
-const data = [
-  {
-    description: "Protesis de mano electronica",
-    img: "https://biotechmagazineandnews.com/wp-content/uploads/2019/09/protesis-mano.jpg",
-    business: "Interbionic",
-    rating: 4,
-    amputationTags: ["mano", "mano izquierda"],
-    functionalityTags: ["Funcionalidad limitada"],
-  },
-  {
-    description: "Protesis dental",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGGJ9g_1Lhnd191fMr32QzIZWIsaFJVvALiA&usqp=CAU",
-    rating: 2.5,
-    business: "Hospital Dontologico",
-    amputationTags: ["Dientes", "Removivle parcialmente"],
-    functionalityTags: ["Completa funcionalidad"],
-  },
-];
-
-const DevicesView = (props) => {
+const Devices= (props) => {
   const { state } = useLocation();
-  const [query, setQuery] = useState("");
-  const [option, setOption] = useState("Todos");
+  const { query = "" } = state || "";
+  const { option = "Todos" } = state || "Todos";
+  const [queryed, setQuery] = useState("");
+  const [optioned, setOption] = useState("Todos");
+  const [data, setData] = useState([]);
+  const [load, handleLoad] = useState(false);
   const navigate = useNavigate();
 
   const handleRadios = (event) => {
@@ -38,12 +24,24 @@ const DevicesView = (props) => {
   };
 
   const handleSubmit = () => {
-    navigate("/Devices", { state: { query, option } });
+    navigate("/Devices", { state: { query: queryed, option: optioned } });
+    handleLoad(!load);
+
   };
 
-  const regexp = new RegExp(query, "i");
+  useEffect(() => {
+    let params = {
+      params: {
+        query,
+        option,
+      },
+    };
+    axios.get("/", params).then((res) => {
+      setData(JSON.parse(res.data));
+    });
+  }, [load]);
 
-  console.log(state);
+  console.log(query, option);
 
   return (
     <Container fluid>
@@ -58,69 +56,17 @@ const DevicesView = (props) => {
           <Row>
             <h2>Dispositivos</h2>
           </Row>
-          {data
-            .filter((device, index) => {
-              if (state.option === "Todos") {
-                if (state.query === "") return device;
-                if (
-                  device.description
-                    .toLowerCase()
-                    .includes(state.query.toLowerCase()) ||
-                  device.functionalityTags.find((element) => {
-                    if (element.includes(state.query.toLowerCase()))
-                      return true;
-                  }) ||
-                  device.amputationTags.find((element) => {
-                    if (element.includes(state.query.toLowerCase()))
-                      return true;
-                  })
-                )
-                  return device;
-              } else if (state.option === "Funcionalidad") {
-                if (state.query === "") return device;
-                else if (
-                  device.description
-                    .toLowerCase()
-                    .includes(state.query.toLowerCase()) ||
-                  device.functionalityTags.find((element) => {
-                    if (element.includes(state.query.toLowerCase()))
-                      return true;
-                  })
-                )
-                  return device;
-              } else if (state.option === "Amputacion") {
-                if (state.query === "") return device;
-                else if (
-                  device.description
-                    .toLowerCase()
-                    .includes(state.query.toLowerCase()) ||
-                  device.amputationTags.find((element) => {
-                    if (element.includes(state.query.toLowerCase()))
-                      return true;
-                  })
-                )
-                  return device;
-              }
-            })
-            .map((obj, idx) => {
-              return (
-                <Row>
-                  <Thumbnail key={idx} data={obj} disabled={true} />
-                </Row>
-              );
-            })}
-          {
-            //data.map((element, index) => {
-            // return (
-            //   <Row>
-            //     <Thumbnail key={index} data={element} disabled={true} />
-            //   </Row>
-            // );
-          }
+          {data.map((obj, idx) => {
+            return (
+              <Row>
+                <Thumbnail key={idx} data={obj} disabled={true} />
+              </Row>
+            );
+          })}
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default DevicesView;
+export default Devices;

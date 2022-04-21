@@ -25,8 +25,8 @@ const Home = (props) => {
 
   return (
       <Container fluid style={{ alignItems: "center", alignContent: "center" }}>
-        <Row className="justify-content-md-center" style={{ paddingTop: 20 }}>
-          <Col xs={8}>
+        <Row xs ={6} className="justify-content-md-center" style={{ paddingTop: 20 }}>
+          <Col xs={6}>
             <LandingCarousel />
           </Col>
         </Row>
