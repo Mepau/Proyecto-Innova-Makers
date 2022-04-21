@@ -8,7 +8,7 @@ const LandingCarousel = () => {
           className="d-block w-100 "
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEYoA1AOybv7tsK-2kL1FuACtRrieutrL4A&usqp=CAU"
           alt="First slide"
-          fluid
+          
           style={{ backgroundImage: "rgba(0, 0, 0, 0.7)" }}
         />
         <Carousel.Caption>
@@ -21,7 +21,7 @@ const LandingCarousel = () => {
           className="d-block w-100"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI-0SZq3s-UPjDppb0QYe_vF5pyNSGnQReZw&usqp=CAU"
           alt="Second slide"
-          fluid
+          
         />
 
         <Carousel.Caption>
@@ -34,7 +34,7 @@ const LandingCarousel = () => {
           className="d-block w-100"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHHdIhsjZHbQBRDwW3nrsXg6VoEkBDecb4ZQ&usqp=CAU"
           alt="Third slide"
-          fluid
+          
         />
 
         <Carousel.Caption>

@@ -16,7 +16,7 @@ const StarRating = (props) => {
   return (
     <Container>
       <br />
-      <Row>
+      <Row >
         {stars.map((value, index) => {
           if (value)
             return (

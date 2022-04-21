@@ -7,13 +7,13 @@ import NeedKnowerView from "../Views/need_knower";
 const Nav = (props) => {
   return (
     <Router>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
             Navbar
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -21,34 +21,34 @@ const Nav = (props) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto ">
-              <li class="nav-item">
-                <Link class="nav-link" to="/">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto ">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
                   Home
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/Devices">
+              <li className="nav-item">
+                <Link className="nav-link" to="/Devices">
                   Devices
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/Need_Knower">
+              <li className="nav-item">
+                <Link className="nav-link" to="/Need_Knower">
                   Needs Knower
                 </Link>
               </li>
             </ul>
-            <form class="d-flex">
+            <form className="d-flex">
               <input
-                class="form-control me-2"
+                className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
             </form>

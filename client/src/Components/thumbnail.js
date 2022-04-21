@@ -9,12 +9,12 @@ const Thumbnail = (props) => {
 
   return (
     <Container style={{ padding: 10 }}>
-      <Row fluid>
+      <Row >
         <Col xs={4}>
-          <Image thumbnail class="img-thumbnail" src={img} />
+          <Image thumbnail className="img-thumbnail" src={img} />
         </Col>
         <Col>
-          <Row fluid>
+          <Row >
             <h3>{description}</h3>
           </Row>
           <Row>
@@ -26,9 +26,9 @@ const Thumbnail = (props) => {
             </Col>
             <Col>
               <Row>
-                {amputationTags.map((tag) => {
+                {amputationTags.map((tag, idx) => {
                   return (
-                    <Col xs={2}>
+                    <Col key={idx} xs={2}>
                       <p>{tag}</p>
                     </Col>
                   );
@@ -42,9 +42,9 @@ const Thumbnail = (props) => {
             </Col>
             <Col>
               <Row>
-                {functionalityTags.map((tag) => {
+                {functionalityTags.map((tag, idx) => {
                   return (
-                    <Col xs={2}>
+                    <Col key={idx} xs={2}>
                       <p>{tag}</p>
                     </Col>
                   );
